@@ -1,0 +1,106 @@
+<h1><strong>pduMain.py</strong></h1>
+<p><strong>Requires a PDUcomms() object to be instantiated and has the following methods available:</strong></p>
+<p><em>turnPortOn(self, port, ip) - Purpose: turn a given port at an IP on</em></p>
+<ul style="list-style-type: square;">
+<li>Takes in port (int) and ip (string)</li>
+<li>Outputs a tuple with the following data (port, ip, data)
+<ul style="list-style-type: square;">
+<li>port (int) is port number that was affected</li>
+<li>ip (string) is the ip address that was affected</li>
+<li>data (string) is some data associated with the success or failure of the function (probably just returns &quot;on&quot;)</li></ul></li></ul>
+<p><em>turnPortOff(self, port, ip) - Purpose: turn a given port at an IP off</em></p>
+<ul>
+<li>Takes in port (int) and ip (string)</li>
+<li>Outputs a tuple with the following data (port, ip, data)
+<ul>
+<li>port (int) is port number that was affected</li>
+<li>ip (string) is the ip address that was affected</li>
+<li>data (string) is some data associated with the success or failure of the function (probably just returns &quot;off&quot;)</li></ul></li></ul>
+<p><em>isOn(self, port, ip) - Purpose: tell whether a port at an ip is on now</em></p>
+<ul>
+<li>Takes in port (int) and ip (string)</li>
+<li>Outputs a tuple with the following data (port, ip, data)
+<ul>
+<li>port (int) is port number that was affected</li>
+<li>ip (string) is the ip address that was affected</li>
+<li>data (boolean) will tell if port is on or off (True - on, False - off)</li></ul></li></ul>
+<p><em>readTemp(self, ip) - Purpose: read the temperature of a pdu</em></p>
+<ul style="list-style-type: square;">
+<li>takes in an ip (string)</li>
+<li>Outputs a tuple with the following data (ip, heat)
+<ul style="list-style-type: square;">
+<li>ip (string) is the ip address that was queried</li>
+<li>heat (int) is the temperature of the heat unit associated with the ip</li></ul></li></ul>
+<p><em>readCurrent(self, port, ip) - Purpose: read the current of a port</em></p>
+<ul style="list-style-type: square;">
+<li>takes in a port (int) and ip (string)</li>
+<li>Outputs a tuple with the following data (port, ip, data)
+<ul style="list-style-type: square;">
+<li>port (int) is the port queried</li>
+<li>ip (string) is the ip address queried</li>
+<li>data (float) is the current running through the port</li></ul></li></ul>
+<p><em>readAllPorts(self, ip) - Purpose: read all ports on an ip at once</em></p>
+<ul style="list-style-type: square;">
+<li>Takes in an ip (string)</li>
+<li>Outputs an array of tuples each with the following data (port, ip data)
+<ul style="list-style-type: square;">
+<li>port (int) shows what port was queried for that array entry</li>
+<li>ip (string) the ip that was queried</li>
+<li>data (boolean) telling whether a port is on or off</li></ul></li></ul>
+<h1><strong>interfacing.js</strong></h1>
+<p><strong>This code interfaces with the python code, but requires an RPC client to be passed into each of the functions. This code can be added to any node.js server by using the following code:</strong></p>
+<p style="text-align: center;"><em>const interfacing = require('./path/to/code/interfacing.js')</em></p>
+<p><strong>Then the following methods can be invoked on the interfacing object</strong></p>
+<p><em>turnPortOn(portNum, ip, client, callback) - Purpose: turn a port on</em></p>
+<ul style="list-style-type: square;">
+<li>Parameters:
+<ul style="list-style-type: square;">
+<li>portNum (int) number of the port</li>
+<li>ip (string) ip address of pdu</li>
+<li>client (object) rpc client that is connected to python spawn</li>
+<li>callback (function) function to be called upon completion of this function</li></ul></li>
+<li>Function gets data returned from python through the response object (res)</li></ul>
+<p><em>turnPortOff(portNum, ip, client, callback) - Purpose: turn a port off</em></p>
+<ul>
+<li>Parameters:
+<ul>
+<li>portNum (int) number of the port</li>
+<li>ip (string) ip address of pdu</li>
+<li>client (object) rpc client that is connected to python spawn</li>
+<li>callback (function) function to be called upon completion of this function</li></ul></li>
+<li>Function gets data returned from python through the response object (res)</li></ul>
+<p><em>isOn(portNum, ip, client, callback) - Purpose: check if a port is on</em></p>
+<ul>
+<li>Parameters:
+<ul>
+<li>portNum (int) number of the port</li>
+<li>ip (string) ip address of pdu</li>
+<li>client (object) rpc client that is connected to python spawn</li>
+<li>callback (function) function to be called upon completion of this function</li></ul></li>
+<li>Function gets data returned from python through the response object (res)</li></ul>
+<p><em>readTemp(ip, client, callback) - Purpose: read the temperature of a pdu</em></p>
+<ul>
+<li>Parameters:<br />
+<ul>
+<li>ip (string) ip address of pdu</li>
+<li>client (object) rpc client that is connected to python spawn</li>
+<li>callback (function) function to be called upon completion of this function</li></ul></li>
+<li>Function gets data returned from python through the response object (res)</li></ul>
+<p><em>readCurrent(portNum, ip, client, callback) - Purpose: read the current in a port</em></p>
+<ul>
+<li>Parameters:
+<ul>
+<li>portNum (int) number of the port</li>
+<li>ip (string) ip address of pdu</li>
+<li>client (object) rpc client that is connected to python spawn</li>
+<li>callback (function) function to be called upon completion of this function</li></ul></li>
+<li>Function gets data returned from python through the response object (res)</li></ul>
+<p><em>readAllPorts(ip, client, callback) - Purpose: read all ports on a pdu</em></p>
+<ul>
+<li>Parameters:<br />
+<ul>
+<li>ip (string) ip address of pdu</li>
+<li>client (object) rpc client that is connected to python spawn</li>
+<li>callback (function) function to be called upon completion of this function</li></ul></li>
+<li>Function gets data returned from python through the response object (res)</li></ul>
+<p><strong><br /></strong></p>

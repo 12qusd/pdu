@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDU Web Interface</title>
+    <script src="/static/jquery-3.1.1.min.js">
+    </script>
+    <script src="/static/bootstrap.min.js">
+    </script>
+    <link href="/static/font-awesome.min.css" rel="stylesheet" />
+    <link href="/static/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+  	<div class="row">
+  		<p class="h2">Viewing PDU: {{pduIP}}</p>
+	  	<span class="dropdown">
+		    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+		    	Connected PDUs <span class="caret"></span>
+			</button>
+		    <ul class="dropdown-menu">
+		      <li><a href="/ip/192.168.0.1">192.168.0.1</a></li>
+		      <li><a href="/ip/192.168.0.2">192.168.0.2</a></li>
+		      <li><a href="/ip/192.168.0.3">192.168.0.3</a></li>
+		    </ul>
+	  	</span>
+        <span>
+            <button id="refresh" class="btn btn-primary">Refresh</button>
+        </span>
+        <span>
+            <button id="save" class="btn btn-primary">Save Changes</button>
+        </span>
+        <span>
+            <a href="/static/documentation.html" target="_blank"><button id="documentation" class="btn btn-info">Documentation</button></a>
+        </span>
+	  	<span id="pduIP" class="hidden">{{pduIP}}</span>
+	</div>
+  	<span class="row">
+  		<h1 class="text-center">Bank 1</h1>
+  	</span>
+    <div class="row">
+    	<span id="port1" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 1</button>
+            <textarea class="form-control" type="text" rows="3" id="note1"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port2" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 2</button>
+            <textarea class="form-control" type="text" rows="3" id="note2"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port3" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 3</button>
+            <textarea class="form-control" type="text" rows="3" id="note3"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port4" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 4</button>
+            <textarea class="form-control" type="text" rows="3" id="note4"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port5" class="col-sm-6 col-md-3 col-lg-1 alert alert-warning">
+    		<button class="btn btn-info">Port 5</button>
+            <textarea class="form-control" type="text" rows="3" id="note5"></textarea>
+    		<div id="data">Current: 5 Amps</div>
+    	</span>
+    	<span id="port6" class="col-sm-6 col-md-3 col-lg-1 alert alert-danger">
+    		<button class="btn btn-info">Port 6</button>
+            <textarea class="form-control" type="text" rows="3" id="note6"></textarea>
+    		<div id="data">Current: 15 Amps</div>
+    	</span>
+    	<span id="port7" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 7</button>
+            <textarea class="form-control" type="text" rows="3" id="note7"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port8" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 8</button>
+            <textarea class="form-control" type="text" rows="3" id="note8"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port9" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 9</button>
+            <textarea class="form-control" type="text" rows="3" id="note9"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port10" class="col-sm-6 col-md-3 col-lg-1 alert alert-danger">
+    		<button class="btn btn-info">Port 10</button>
+            <textarea class="form-control" type="text" rows="3" id="note10"></textarea>
+    		<div id="data">Current: 20 Amps</div>
+    	</span>
+    	<span id="port11" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 11</button>
+            <textarea class="form-control" type="text" rows="3" id="note11"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port12" class="col-sm-6 col-md-3 col-lg-1 alert alert-warning">
+    		<button class="btn btn-info">Port 12</button>
+            <textarea class="form-control" type="text" rows="3" id="note12"></textarea>
+    		<div id="data">Current: 4 Amps</div>
+    	</span>
+    </div>
+    <span class="row">
+    	<h1 class="text-center">Bank 2</h1>
+    </span>
+    <div class="row">
+    	<span id="port13" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 13</button>
+            <textarea class="form-control" type="text" rows="3" id="note13"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port14" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 14</button>
+            <textarea class="form-control" type="text" rows="3" id="note14"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port15" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 15</button>
+            <textarea class="form-control" type="text" rows="3" id="note15"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port16" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 16</button>
+            <textarea class="form-control" type="text" rows="3" id="note16"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port17" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 17</button>
+            <textarea class="form-control" type="text" rows="3" id="note17"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port18" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 18</button>
+            <textarea class="form-control" type="text" rows="3" id="note18"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port19" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 19</button>
+            <textarea class="form-control" type="text" rows="3" id="note19"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port20" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 20</button>
+            <textarea class="form-control" type="text" rows="3" id="note20"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port21" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 21</button>
+            <textarea class="form-control" type="text" rows="3" id="note21"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port22" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 22</button>
+            <textarea class="form-control" type="text" rows="3" id="note22"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port23" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 23</button>
+            <textarea class="form-control" type="text" rows="3" id="note23"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    	<span id="port24" class="col-sm-6 col-md-3 col-lg-1 alert alert-success">
+    		<button class="btn btn-info">Port 24</button>
+            <textarea class="form-control" type="text" rows="3" id="note24"></textarea>
+    		<div id="data">Current: 0 Amps</div>
+    	</span>
+    </div>
+  </body>
+</html>

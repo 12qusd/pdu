@@ -1,0 +1,19 @@
+{
+  "name": "pduweb",
+  "version": "0.0.1",
+  "description": "Web interface for pdu control",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shingo Lavine",
+  "license": "ISC",
+  "dependencies": {
+    "any-db": "^2.2.0",
+    "body-parser": "^1.17.2",
+    "consolidate": "^0.14.5",
+    "express": "^4.15.3",
+    "hogan": "^1.0.2",
+    "zerorpc": "^0.9.7"
+  }
+}
